@@ -18,17 +18,25 @@ getValue();
 
 function onFormSubmit(evt) {
     evt.preventDefault();
-    evt.currentTarget.reset();
-    localStorage.removeItem(STORAGE_KEY);
+
+    if (!formObject[refs.input.name] || !formObject[refs.textarea.name]){
+        alert('All fields must be filled');
+    } else {
+        console.log(formObject);
+        evt.currentTarget.reset();
+        localStorage.removeItem(STORAGE_KEY);
+
+        formObject[refs.input.name] = '';
+        formObject[refs.textarea.name] = '';
+    }
+
 };
 
 function onInput(evt) {
     // console.log(evt.target.name);
     // console.log(evt.target.value);
     formObject[evt.target.name] = evt.target.value;
-    console.log(formObject);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formObject));
-    
 };
 
 function getValue() {
@@ -36,11 +44,11 @@ function getValue() {
     const parsedMessage = JSON.parse(savedMessage);
 
     if (parsedMessage) {
-        refs.input.value = parsedMessage.email || '';
+
+        refs.input.value = parsedMessage.email;
         formObject.email = refs.input.value;
 
-        refs.textarea.value = parsedMessage.message || '';
+        refs.textarea.value = parsedMessage.message;
         formObject.message = refs.textarea.value;
     }
-
 }
