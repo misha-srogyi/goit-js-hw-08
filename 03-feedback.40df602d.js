@@ -4,4 +4,4 @@ var t=arguments[3],n="Expected a function",e=NaN,i="[object Symbol]",r=/^\s+|\s+
 },{}],"TTyb":[function(require,module,exports) {
 "use strict";var e=t(require("lodash.throttle"));function t(e){return e&&e.__esModule?e:{default:e}}const a="feedback-form-state";let r={};const n={form:document.querySelector(".feedback-form"),textarea:document.querySelector(".feedback-form textarea"),input:document.querySelector(".feedback-form input")};function o(e){e.preventDefault(),r[n.input.name]&&r[n.textarea.name]?(console.log(r),e.currentTarget.reset(),localStorage.removeItem(a),r[n.input.name]="",r[n.textarea.name]=""):alert("All fields must be filled")}function u(e){r[e.target.name]=e.target.value,localStorage.setItem(a,JSON.stringify(r))}function l(){const e=localStorage.getItem(a),t=JSON.parse(e);t&&(n.input.value=t.email,r.email=n.input.value,n.textarea.value=t.message,r.message=n.textarea.value)}n.form.addEventListener("submit",o),n.form.addEventListener("input",(0,e.default)(u,500)),l();
 },{"lodash.throttle":"FNyO"}]},{},["TTyb"], null)
-//# sourceMappingURL=/goit-js-hw-08/03-feedback.40df602d.js.map
+//# sourceMappingURL=/frontend_test/03-feedback.40df602d.js.map
