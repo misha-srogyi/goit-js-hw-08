@@ -12,9 +12,7 @@ const refs = {
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onInput, 500));
 
-
 getValue();
-
 
 function onFormSubmit(evt) {
     evt.preventDefault();
@@ -51,4 +49,5 @@ function getValue() {
         refs.textarea.value = parsedMessage.message;
         formObject.message = refs.textarea.value;
     }
+
 }
